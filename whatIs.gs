@@ -1,0 +1,34 @@
+function pageMeister_whatIs() {
+  var app = UiApp.createApplication().setHeight(450);
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var panel = app.createVerticalPanel();
+  var autoGrid = app.createGrid(1, 2);
+  var image = app.createImage(this.IMAGEPATH);
+  image.setHeight("100px");
+  var label = app.createLabel("pageMeister: Use a Spreadsheet to create, manage, and assess student web pages in a Google Site");
+  label.setStyleAttribute('fontSize', '1.5em').setStyleAttribute('fontWeight', 'bold');
+  autoGrid.setWidget(0, 0, image);
+  autoGrid.setWidget(0, 1, label);
+  var mainGrid = app.createGrid(4, 1);
+  var html = "<h3>Features</h3>";
+  html += "<ul><li>Takes the URL of an existing Google Site and uses a list of students (with email addresses) to generate a page per student.</li>";
+  html += "<li>Allows you to construct the page titles in the spreadsheet.</li>"; 
+  html += "<li>Allows you to position the student pages underneath any page on your site.</li>"; 
+  html += "<li>Lets you use standard Sites templates, or specify any existing custom page template.</li>";
+  html += "<li>Due to limitations in the Apps Script API, this script DOES NOT use \"Page-Level Permissions\". As a workaround, all students can be automatically added as editors or viewers to the whole Site.</li>";
+  html += "<li>Optionally send notification emails to students with new or existing pages</li>";
+  html += "<li>Batch send custom feedback emails to students using spreadsheet data.</li>";
+  html += "</ul>";
+  mainGrid.setWidget(0, 0, app.createHTML(html));
+  var sponsorLabel = app.createLabel("Brought to you by");
+  var sponsorImage = app.createImage("http://www.youpd.org/sites/default/files/acquia_commons_logo36.png");
+  //var supportLink = app.createAnchor('Watch the tutorial!', 'http://www.youpd.org/studentpagecreator');
+  mainGrid.setWidget(1, 0, sponsorLabel);
+  mainGrid.setWidget(2, 0, sponsorImage);
+  //mainGrid.setWidget(3, 0, supportLink);
+  app.add(autoGrid);
+  panel.add(mainGrid);
+  app.add(panel);
+  ss.show(app);
+  return app;                                                                    
+}
