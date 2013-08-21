@@ -6,7 +6,8 @@ var scriptTitle = "pageMeister Script V1.0 (4/28/13)";
 
 //Want to run autoCrat on a time-based trigger?  
 //Set time triggers on the autoCrat_onFormSubmit function.
-
+var scriptName = "pageMeiser"
+var scriptTrackingId = "UA-40505612-1"
 
 var pathToDrive = "https://googledrive.com/host/"  + '0B2vrNcqyzernM01qazZIQm1yYkE';
 var IMAGEPATH = pathToDrive + "/pageMeister.gif";
@@ -24,7 +25,6 @@ function onOpen() {
 }
 
 function pageMeister() {
-  setpageMeisterUid();
   setpageMeisterSid();
   var app = UiApp.createApplication().setTitle("Page Creation Settings").setHeight(400).setWidth(480);
   var topLabel = app.createLabel("This script will only create new pages for rows with blank \"Status\" values.")
