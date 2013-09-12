@@ -12,6 +12,9 @@ var scriptTrackingId = "UA-40505612-1"
 var pathToDrive = "https://googledrive.com/host/"  + '0B2vrNcqyzernM01qazZIQm1yYkE';
 var IMAGEPATH = pathToDrive + "/pageMeister.gif";
 
+function onInstall() {
+  onOpen();
+}
 
 function onOpen() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
