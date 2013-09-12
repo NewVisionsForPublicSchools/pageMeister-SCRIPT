@@ -1,4 +1,4 @@
-var scriptTitle = "pageMeister Script V1.0 (4/28/13)";
+var scriptTitle = "pageMeister Script V1.0.2 (9/11/13)";
 // Written by Andrew Stillman for New Visions for Public Schools
 // Published under GNU General Public License, version 3 (GPL-3.0)
 // See restrictions at http://www.opensource.org/licenses/gpl-3.0.html
@@ -127,7 +127,7 @@ function parentPageRefresh(e) {
     if ((siteURL=="")||(siteURL=="undefined")) {
       return app;
     }
-  }
+  } 
   try {
     var site = SitesApp.getSiteByUrl(siteURL);
     var pages = site.getAllDescendants();
@@ -144,7 +144,11 @@ function parentPageRefresh(e) {
         parentPageList.setSelectedIndex(index+1);
       }
     }
+    try {
     var templates = site.getTemplates();
+    } catch(err) {
+      templates = [];
+    }
     var templateNames = [];
     var stockTemplates = ['Web page','Announcements','File cabinet','List'];
     for (var i=0; i<stockTemplates.length; i++) {
@@ -167,6 +171,7 @@ function parentPageRefresh(e) {
     var button = app.getElementById('button').setEnabled(true);
     return app;
   } catch(err) {
+    Logger.log(err.message);
     return app;
   }
 }
